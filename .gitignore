@@ -8,3 +8,4 @@ temp/*
 temp/uploads/*
 !temp/uploads/.gitkeep
 !temp/uploads
+yarn-error.log
