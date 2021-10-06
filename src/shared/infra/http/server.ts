@@ -8,7 +8,10 @@ import express, { NextFunction, Request, Response } from 'express';
 
 import AppError from '@shared/errors/AppError';
 
+import '../../containers/index';
 import routes from './routes/index.routes';
+
+import '../typeorm/connection';
 
 const app = express();
 
