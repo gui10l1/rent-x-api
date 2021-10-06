@@ -14,7 +14,7 @@ interface IUploadConfig {
 }
 
 const tempFolder = path.resolve(__dirname, '..', '..', 'temp');
-const uploadFolder = path.resolve(__dirname, '..', '..', 'temp');
+const uploadFolder = path.resolve(__dirname, '..', '..', 'temp', 'uploads');
 
 export default {
   type: 'disk',
