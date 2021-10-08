@@ -2,7 +2,7 @@ import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import CreateUsersService from '@modules/users/services/CreateUsersService';
+import CreateUsersService from '@modules/users/services/users/CreateUsersService';
 
 import AppError from '@shared/errors/AppError';
 

@@ -28,7 +28,7 @@ export default class User {
 
   @Column('boolean', { nullable: true, default: 'true' })
   @Exclude()
-  admin: boolean;
+  admin?: boolean;
 
   @CreateDateColumn()
   created_at: Date;
@@ -38,8 +38,8 @@ export default class User {
 
   @Expose({ name: 'profile_image_url' })
   getProfileImageUrl(): string {
-    const appUrl = process.env.APP_URL;
+    const apiUrl = process.env.API_URL;
 
-    return `${appUrl}/${this.profile_image}`;
+    return `${apiUrl}/files/${this.profile_image}`;
   }
 }

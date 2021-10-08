@@ -3,7 +3,7 @@ import FakeHashProvider from '@shared/providers/HashProvider/fakes/FakeHashProvi
 import FakeStorageProvider from '@shared/providers/StorageProvider/fakes/FakeStorageProvider';
 import IStorageProvider from '@shared/providers/StorageProvider/models/IStorageProvider';
 
-import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
+import FakeUsersRepository from '../../repositories/fakes/FakeUsersRepository';
 import CreateAdminsService from './CreateAdminsService';
 
 let fakeUsersRepository: FakeUsersRepository;
@@ -40,23 +40,6 @@ describe('CreateAdmins', () => {
         admin: true,
       }),
     ).rejects.toBeInstanceOf(AppError);
-  });
-
-  it('should be able to delete temp folder files', async () => {
-    const spyOnStorageProviderCb = jest.spyOn(
-      fakeStorageProvider,
-      'deleteFilesFromTempFolder',
-    );
-
-    await createAdminsService.execute({
-      email: 'johndoe@exemple.com',
-      name: 'John Doe',
-      password: '123456',
-      profileImage: 'profileImage.png',
-      admin: true,
-    });
-
-    expect(spyOnStorageProviderCb).toHaveBeenCalled();
   });
 
   it('should be able to create users', async () => {

@@ -4,9 +4,9 @@ import AppError from '@shared/errors/AppError';
 import IHashProvider from '@shared/providers/HashProvider/models/IHashProvider';
 import IStorageProvider from '@shared/providers/StorageProvider/models/IStorageProvider';
 
-import IUsersRepositoryDTO from '../dtos/IUsersRepositoryDTO';
-import User from '../infra/typeorm/entities/User';
-import IUsersRepository from '../repositories/IUsersRepository';
+import IUsersRepositoryDTO from '../../dtos/IUsersRepositoryDTO';
+import User from '../../infra/typeorm/entities/User';
+import IUsersRepository from '../../repositories/IUsersRepository';
 
 type IRequest = Omit<IUsersRepositoryDTO, 'admin'>;
 
@@ -24,10 +24,6 @@ export default class CreateUsersService {
   ) {}
 
   public async execute({ email, password, ...rest }: IRequest): Promise<User> {
-    if (this.storageProvider.deleteFilesFromTempFolder) {
-      await this.storageProvider.deleteFilesFromTempFolder();
-    }
-
     const findUserByEmail = await this.usersRepository.findByEmail(email);
 
     if (findUserByEmail) {
