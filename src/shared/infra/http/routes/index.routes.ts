@@ -1,10 +1,24 @@
 import { Router } from 'express';
 
 import adminsRoutes from '@modules/users/infra/http/routes/admins.routes';
+import resetUsersPasswordsRoutes from '@modules/users/infra/http/routes/resetUsersPasswords.routes';
+import sendRecoveryPasswordsMailRoutes from '@modules/users/infra/http/routes/sendRecoveryPasswordsMail.routes';
+import sessionsRoutes from '@modules/users/infra/http/routes/sessions.routes';
 import usersRoutes from '@modules/users/infra/http/routes/users.routes';
+import usersPasswordRoutes from '@modules/users/infra/http/routes/usersPassword.routes';
+import usersProfilePhotoRoutes from '@modules/users/infra/http/routes/usersProfilePhoto.routes';
 
 const routes = Router();
 
-routes.use('/users', adminsRoutes, usersRoutes);
+routes.use(
+  '/users',
+  adminsRoutes,
+  usersRoutes,
+  usersPasswordRoutes,
+  sessionsRoutes,
+  usersProfilePhotoRoutes,
+  sendRecoveryPasswordsMailRoutes,
+  resetUsersPasswordsRoutes,
+);
 
 export default routes;

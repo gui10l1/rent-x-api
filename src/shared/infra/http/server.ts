@@ -6,6 +6,8 @@ import 'dotenv/config';
 import { CelebrateError, errors } from 'celebrate';
 import express, { NextFunction, Request, Response } from 'express';
 
+import uploadConfig from '@config/uploadConfig';
+
 import AppError from '@shared/errors/AppError';
 
 import '../../containers/index';
@@ -17,6 +19,7 @@ const app = express();
 
 app.use(express.json());
 app.use(routes);
+app.use('/files', express.static(uploadConfig.uploadFolder));
 if (process.env.APP_PRODUCTION === 'false') {
   app.use(errors());
 }

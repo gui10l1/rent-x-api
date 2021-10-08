@@ -2,7 +2,7 @@ import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import CreateAdminsService from '@modules/users/services/CreateAdminsService';
+import CreateAdminsService from '@modules/users/services/users/CreateAdminsService';
 
 import AppError from '@shared/errors/AppError';
 

@@ -4,6 +4,9 @@ import multer from 'multer';
 
 import uploadConfig from '@config/uploadConfig';
 
+import ensureAdminAccess from '@shared/infra/http/middlewares/ensureAdminAccess';
+import ensureAuthentication from '@shared/infra/http/middlewares/ensureAuthentication';
+
 import AdminsController from '../controllers/AdminsController';
 
 const adminsRoutes = Router();
@@ -12,6 +15,8 @@ const upload = multer(uploadConfig.config.multer);
 
 adminsRoutes.post(
   '/admins',
+  ensureAuthentication,
+  ensureAdminAccess,
   upload.single('profileImage'),
   celebrate({
     [Segments.BODY]: {
