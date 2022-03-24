@@ -20,7 +20,7 @@ describe('DeleteCars', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('should be able to find cars', async () => {
+  it('should be able to delete cars', async () => {
     const spyOn = jest.spyOn(fakeCarsRepository, 'delete');
 
     const car = await fakeCarsRepository.create({
